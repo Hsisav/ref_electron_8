@@ -357,8 +357,7 @@ NAN_METHOD(WriteInt64) {
   } else if (in->IsString()) {
     char *endptr, *str;
     int base = 0;
-    String::Utf8Value _str(in);
-    str = *_str;
+    str = *v8::String::Utf8Value(in);
 
     errno = 0;     /* To distinguish success/failure after call */
     val = strtoll(str, &endptr, base);
@@ -444,8 +443,7 @@ NAN_METHOD(WriteUInt64) {
   } else if (in->IsString()) {
     char *endptr, *str;
     int base = 0;
-    String::Utf8Value _str(in);
-    str = *_str;
+    str = *v8::String::Utf8Value(in);
 
     errno = 0;     /* To distinguish success/failure after call */
     val = strtoull(str, &endptr, base);
